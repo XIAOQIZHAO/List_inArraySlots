@@ -8,13 +8,13 @@ public class List_inArraySlots {
     // declare fields here
     private int capacity;
     private int filledElements;
-    private int[] list;
+    private int[] arr;
     /**
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
-	capacity = 2;
-        list = new int[capacity];
+	capacity = 10;
+        arr = new int[capacity];
     }
 
 
@@ -32,8 +32,8 @@ public class List_inArraySlots {
       */ 
     public String toString() {
 	String output = "[";
-	for (int ele : list){
-	    output += ele + ",";
+	for (int i = 0; i < filledElements; i++){
+	    output += arr[i] + ",";
 	}
 	return output + "]";
     }
@@ -45,7 +45,13 @@ public class List_inArraySlots {
       @return true, in keeping with conventions yet to be discussed
      */
      public boolean add( int value) {
-	 list[filledElements + 1] = value;
+	 if (filledElements < capacity)
+	     arr[filledElements] = value;
+	 else {
+	     expand();
+	     arr[filledElements] = value;
+	 }
+	 filledElements++;
 	 return true;
      }
 
@@ -55,7 +61,11 @@ public class List_inArraySlots {
       preserving existing data
      */
      private void expand() {
-	 list = new int[capacity *= 2];
+	 int[] newArr = new int[capacity *= 2];
+	 for (int i = 0; i < arr.length; i++){
+	     newArr[i] = arr[i];
+	 }
+	 arr = newArr;
 	 System.out.println( "expand... (for debugging)" + capacity);
 	 /* S.O.P. rules for debugging:
               Working methods should be silent. But during 
