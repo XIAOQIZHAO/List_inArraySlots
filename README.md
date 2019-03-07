@@ -3,8 +3,8 @@
 By *Lucy Wang* & *Xiaoqi Zhao*
 
 ### **fields**
-- lengthOfArray
-- numberOfFilledSlots
+- capacity
+- filledElements
 
 ### **constructors**
 - List_inArraySlots()
