@@ -5,29 +5,23 @@
 
 public class List_inArraySlots {
 
-    private int lengthOfList; 
-    private int numberOfFilledSlots;
+    private int capacity;
     private int filledElements;
-    //private int[] currentArray;
-
-    int[] currentArray = new int[10];
+    private int[] arr;
 
     /**
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
-      lengthOfList = 2;
-      //int[] newArray = new int[10];
-      // for( int i = lengthOfList; lengthOfList >= 0; lengthOfList--){
-      //       newArray[i] = 1;
-      } 
-
+	      capacity = 10;
+        arr = new int[capacity];
+    }
 
     /** 
       @return the number of elements in this list
      */
     public int size() {
-      return lengthOfList;
+      return filledElements;
     }
 
 
@@ -37,15 +31,14 @@ public class List_inArraySlots {
       */ 
     public String toString() {
       String stringRep = "";
-      int i = lengthOfList;
+      int i = filledElements;
 
-      if( i < 0)
-        return "[" + stringRep + "]";
-      else {
-        stringRep = currentArray[i] + ", " + stringRep;
-        return stringRep;
+      while( i > 0){
+        stringRep += arr[i - 1] + ", ";
+        i--;
       }
-    }
+        return "[" + stringRep + "]";
+      }
 
     
     /** 
@@ -53,21 +46,34 @@ public class List_inArraySlots {
       
       @return true, in keeping with conventions yet to be discussed
      */
-     // public boolean add( int value) {
-     // }
+     public boolean add( int value) {
+	 if (filledElements < capacity)
+	     arr[filledElements] = value;
+	 else {
+	     expand();
+	     arr[filledElements] = value;
+	 }
+	 filledElements++;
+	 return true;
+     }
 
 
     /** 
       Double the capacity of the List_inArraySlots, 
       preserving existing data
      */
-     // private void expand() {
-        // System.out.println( "expand... (for debugging)");
-           // /* S.O.P. rules for debugging:
-              // Working methods should be silent. But during 
-              // development, the programmer must verify that 
-              // this method is called when that is appropriate.
-              // So test using the println(), then comment it out.
-              // */
-     // }
+     private void expand() {
+	 int[] newArr = new int[capacity *= 2];
+	 for (int i = 0; i < arr.length; i++){
+	     newArr[i] = arr[i];
+	 }
+	 arr = newArr;
+	 System.out.println( "expand... (for debugging)" + capacity);
+	 /* S.O.P. rules for debugging:
+              Working methods should be silent. But during 
+              development, the programmer must verify that 
+              this method is called when that is appropriate.
+              So test using the println(), then comment it out.
+	 */
+     }
 }
