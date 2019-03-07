@@ -15,10 +15,10 @@ By *Lucy Wang* & *Xiaoqi Zhao*
 - size()
 - toString()
 - expand()
-- ~~removeElement(ClassName element)
-- accessElement(int indexNum)
-- ascertainLengthOfList(ArrayList<> arrayList)
-- changeTheNthElement(int n)~~
+~~- removeElement(ClassName element)~~
+~~- accessElement(int indexNum)~~
+~~- ascertainLengthOfList(ArrayList<> arrayList)~~
+~~- changeTheNthElement(int n)~~
 
 ### **remarks on UserOfList**
 
