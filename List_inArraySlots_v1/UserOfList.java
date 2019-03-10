@@ -47,7 +47,7 @@ public class UserOfList {
         }
 
                        // --------- end of "code that worked in v0" ---------
-// -------------------------------------------
+	//-------------------------------------------
 //      Local method and invocations of it to...
         // test set
         setTest(  8);

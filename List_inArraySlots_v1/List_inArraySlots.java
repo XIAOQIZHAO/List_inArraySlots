@@ -82,13 +82,7 @@ public class List_inArraySlots {
            whether user violated the condition.)
      */
     public int get( int index ) {
-      int elementVal;
-      int indexOf = 0;
-      for( int i = 0; i <= index; i++) {
-        indexOf = i;
-      }
-      elementVal = elements[indexOf]; 
-      return elementVal;
+	return elements[index];
     }
 
 
@@ -113,14 +107,33 @@ public class List_inArraySlots {
     //   (that is, increase the index associated with each).
      
      public void add( int index, int value) {
-      int current, previous = 0;
-      for (int i = index; i <= filledElements + 1; i++){
-        current = this.get( i);
-        elements[i] = previous;
-        previous = current;
-      }
-      elements[index] = value;
+	 int current, previous = 0;
+	 int filledEle = filledElements;
+	 for (int i = index; i <= filledEle + 1; i++){
+	     if( i == elements.length) {
+		 filledElements++;
+		 expand();
+	     }
+	     current = this.get( i);
+	     elements[i] = previous;
+	     previous = current;
+	 }
+	 elements[index] = value;
+	 if (filledElements != filledEle + 1){
+	     filledElements++;
+		 }
      }
+
+    // alternatively...
+    //  	 int[] laterList = new int[elements.length + 1];
+    //  	 for (int i = index; i < filledElements; i++)
+    //  	     laterList[i + 1] = elements[i];
+    //  	 for (int i = 0; i < index; i++)
+    //  	     laterList[i] = elements[i];
+    //  	 laterList[index] = value;
+    //  	 filledElements++;
+    //  	 elements = laterList;
+    //  }
 
 
     // /**
