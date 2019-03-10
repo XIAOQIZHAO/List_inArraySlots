@@ -144,7 +144,16 @@ public class List_inArraySlots {
 
     //   @return the value that was removed from the list
     //  */
-    //  public int remove( int index) {
-    //  }
-
+     public int remove( int index) {
+	 int removedValue = elements[index];
+     	 int[] laterList = new int[elements.length - 1];
+     	 for (int i = index; i < filledElements - 1; i++)
+     	     laterList[i - 1] = elements[i];
+     	 for (int i = 0; i < index; i++)
+     	     laterList[i] = elements[i];
+     	 filledElements--;
+     	 elements = laterList;
+	 return removedValue;
+     }
 }
+

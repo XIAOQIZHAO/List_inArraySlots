@@ -69,6 +69,14 @@ public class UserOfList {
         addAtTest( 2, 23);
         addAtTest( 2, 23);
 
+	 //-------------------------------------------
+        // test removing an element
+        System.out.println("removing value " + list.remove( 6)
+                          + ", leaving " + list.size() + " elements:");
+        System.out.println( list);
+        System.out.println(
+            "expecting:" + System.lineSeparator()
+          + "[29,0,23,23,23,19, NO -1 HERE! -2,-3...]");
 
     }  // end of main()
 
@@ -101,4 +109,5 @@ public class UserOfList {
           + System.lineSeparator()
         );
     }
+
 }
