@@ -155,5 +155,18 @@ public class List_inArraySlots {
      	 elements = laterList;
 	 return removedValue;
      }
+
+
+    
+    public boolean addAsHead(int value){
+	filledElements++;
+	if (filledElements == elements.length) expand();
+	int[] oldElements = new int[elements.length + 1];
+	for (int i = 0; i < filledElements; i++)
+	    oldElements[i + 1] = elements[i];
+	oldElements[0] = value;
+	elements = oldElements;
+	return true;
+    }
 }
 
